@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace FilmsXamarin.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SelectedFilm : ContentPage
+	public partial class AboutView : ContentPage
 	{
-		public SelectedFilm ()
+		public AboutView ()
 		{
 			InitializeComponent ();
 		}
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-    }
+	}
 }

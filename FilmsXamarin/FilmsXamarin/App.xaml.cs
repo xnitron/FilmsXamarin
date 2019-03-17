@@ -12,7 +12,7 @@ namespace FilmsXamarin
         {
             InitializeComponent();
 
-            MainPage = new TaskView();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

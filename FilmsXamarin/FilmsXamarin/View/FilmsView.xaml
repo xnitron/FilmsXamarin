@@ -1,13 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FilmsXamarin.View.FilmsView"
-             Title="Films">
+<ContentPage
+    x:Class="FilmsXamarin.View.FilmsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Films">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!--  SelectedItem="{Binding Film}">  -->
+            <ListView x:Name="FilmsList" ItemsSource="{Binding Films}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <!--<ViewCell>-->
+                        <StackLayout>
+                            <Image Source="about.png" />
+                            <!--<Label Text="{Binding title}" />
+                                <Label Text="{Binding overview}" />-->
+                        </StackLayout>
+                        <!--</ViewCell>-->
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

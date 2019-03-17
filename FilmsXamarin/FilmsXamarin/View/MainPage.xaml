@@ -8,34 +8,36 @@
     <MasterDetailPage.Master>
         <ContentPage Title="Films">
             <ContentPage.Content>
-                <StackLayout Padding="10,30,1,10">
-                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                        <Image 
-                            Aspect="AspectFill"
-                            HeightRequest="32"
-                            Source="logo"
-                            VerticalOptions="Center"
-                            WidthRequest="32" />
-                        <Label Text="Films for you" VerticalOptions="Center" />
+                <StackLayout Padding="0,30,0,10">
+                    <StackLayout Orientation="Horizontal"
+                                 Padding="0,0,0,20">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Films for you"
+                            VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                        <Image
-                            Aspect="AspectFill"
-                            HeightRequest="32"
-                            Source="about"
-                            VerticalOptions="Center"
-                            WidthRequest="32" />
-                        <Label Text="About" VerticalOptions="Center" />
-                    </StackLayout>
-                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                        <Image
-                            Aspect="AspectFill"
-                            HeightRequest="32"
-                            Source="exit"
-                            VerticalOptions="Center"
-                            WidthRequest="32" />
-                        <Label Text="Exit" VerticalOptions="Center" />
-                        <Button Clicked="Button_Clicked" Text="Press" />
+                        <ListView ItemsSource="{Binding MenuList}"
+                                  SelectedItem="{Binding SelectedMenuItem}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout
+                                            Padding="10"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Center">
+                                            <Image
+                                                Margin="5,0,25,0"
+                                                HorizontalOptions="Start"
+                                                Source="{Binding MenuIcon}" />
+                                            <Label HorizontalOptions="FillAndExpand" Text="{Binding MenuText}" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
                 </StackLayout>
             </ContentPage.Content>

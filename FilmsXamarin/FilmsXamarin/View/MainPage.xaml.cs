@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FilmsXamarin.ViewModel;
 using Xamarin.Forms;
 
 namespace FilmsXamarin.View
@@ -13,12 +14,8 @@ namespace FilmsXamarin.View
         {
             InitializeComponent();
             Detail = new NavigationPage(new FilmsView());
+            BindingContext = new MenuBarViewModel(this); 
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Detail = new NavigationPage(new SelectedFilm());
-            IsPresented = false;
-        }
+        
     }
 }

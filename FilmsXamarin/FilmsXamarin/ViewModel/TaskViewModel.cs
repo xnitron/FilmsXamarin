@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Input;
@@ -10,7 +11,7 @@ using Xamarin.Forms;
 
 namespace FilmsXamarin.ViewModel
 {
-    public class TaskViewModel : INotifyPropertyChanged
+    public class TaskViewModel : BaseViewModel
     {
         private ObservableCollection<TaskModel> _criterionList;
         private string _criterion;
@@ -50,7 +51,7 @@ namespace FilmsXamarin.ViewModel
         {
             get
             {
-                return _criterion;
+                return  _criterion;
             }
             set
             {
@@ -83,10 +84,6 @@ namespace FilmsXamarin.ViewModel
             CriterionList.Add(new TaskModel { Criterion = _criterion, SliderValue = _sliderValue});                
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+       
     }
 }
