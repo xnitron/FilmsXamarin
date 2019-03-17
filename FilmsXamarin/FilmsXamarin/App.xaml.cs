@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FilmsXamarin.View;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace FilmsXamarin
@@ -11,7 +12,7 @@ namespace FilmsXamarin
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new TaskView();
         }
 
         protected override void OnStart()

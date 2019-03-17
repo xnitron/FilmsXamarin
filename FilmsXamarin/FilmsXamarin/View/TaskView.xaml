@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FilmsXamarin.View.TaskView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Slider">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="MinimumTrackColor" Value="Black" />
+                <Setter Property="MaximumTrackColor" Value="Gray" />
+                <Setter Property="ThumbColor" Value="Black" />
+                <Setter Property="Margin" Value="5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <StackLayout VerticalOptions="Start">
+                <ListView ItemsSource="{Binding CriterionList}"
+                          IsEnabled="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout
+                                    Padding="10"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <Label Text="{Binding Criterion}" WidthRequest="100" 
+                                           HorizontalOptions="Start"/>
+                                    <Slider
+                                        x:Name="SliderRating"
+                                        Maximum="10"
+                                        Minimum="0"
+                                        Value="{Binding SliderValue}" />
+                                    <Label Text="{Binding Source={x:Reference SliderRating}, Path=Value, StringFormat='{0:0.0}'}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout Padding="10" Orientation="Horizontal">
+                <Entry
+                    FontSize="14"
+                    Placeholder="Критерий"
+                    Text="{Binding Criterion}"
+                    HorizontalTextAlignment="Center"
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"/>
+                <Entry
+                    FontSize="14"
+                    Keyboard="Numeric"
+                    MaxLength="10"
+                    HorizontalTextAlignment="Center"
+                    Placeholder="№"
+                    Text="{Binding SliderValue}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="End"/>
+            </StackLayout>
+            <StackLayout>
+                <Button
+                    Command="{Binding AddCommand}"
+                    CommandParameter="{Binding}"
+                    Text="ADD" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
