@@ -57,11 +57,12 @@ namespace FilmsXamarin.ViewModel
                     switch (_menuBar.Id)
                     {
                         case 0:
-                            _page.Detail = new NavigationPage(new AboutView());
+                            //_page.Navigation.PushAsync(new AboutView());
+                            _page.Detail.Navigation.PushAsync(new AboutView());
                             _page.IsPresented = false;
                             break;
                         case 2:
-                            _page.Detail = new NavigationPage(new TaskView());
+                            _page.Detail.Navigation.PushAsync(new TaskView());
                             _page.IsPresented = false;
                             break;
                         default:

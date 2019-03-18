@@ -21,18 +21,9 @@ namespace FilmsXamarin.ViewModel
         private Page _page;
         private ObservableCollection<FilmModel> _films;
 
-        public FilmsViewModel()
+        public FilmsViewModel(Page page)
         {
-            
-
-            //json = json.Select(film =>
-            //{
-            //    film.OverView = TrimString(film.OverView);
-
-            //    film.DisplayImage = @"/Images" + film.DisplayImage;
-            //    return film;
-            //});
-
+            _page = page;
             GetJson();
 
         }
@@ -42,12 +33,11 @@ namespace FilmsXamarin.ViewModel
             var content = await _client.GetStringAsync(Url);
             var posts = JsonConvert.DeserializeObject<FilmModelList>(content);
             json = posts.results;
-            
+
             var post = json.Select(film =>
                 {
-                    film.overview = TrimString(film.overview);
+                    film.OverView = TrimString(film.OverView);
 
-                    film.poster_path = @"/Images" + film.poster_path;
                     return film;
                 });
 
@@ -65,14 +55,12 @@ namespace FilmsXamarin.ViewModel
                 if (value != _filmModel)
                 {
                     _filmModel = value;
-                    _page = new NavigationPage(new SelectedFilm());
+                    _page.Navigation.PushAsync(new SelectedFilm());
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        //public ObservableCollection<FilmModelList> Films { get; set; }
-        //public ObservableCollection<FilmModel> Films { get; set; }
         public ObservableCollection<FilmModel> Films
         {
             get
@@ -81,14 +69,16 @@ namespace FilmsXamarin.ViewModel
             }
             set
             {
-
-                _films = value;
-                NotifyPropertyChanged();
+                if (value != _films)
+                {
+                    _films = value;
+                    NotifyPropertyChanged();
+                }
 
             }
         }
 
-        private string TrimString(string str, int length = 100)
+        private string TrimString(string str, int length = 20)
         {
             if (str.Length > length)
             {

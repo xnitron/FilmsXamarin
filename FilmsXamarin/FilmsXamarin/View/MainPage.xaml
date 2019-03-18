@@ -9,8 +9,7 @@
         <ContentPage Title="Films">
             <ContentPage.Content>
                 <StackLayout Padding="0,30,0,10">
-                    <StackLayout Orientation="Horizontal"
-                                 Padding="0,0,0,20">
+                    <StackLayout Padding="0,0,0,20" Orientation="Horizontal">
                         <Label
                             FontAttributes="Bold"
                             FontSize="20"
@@ -19,8 +18,7 @@
                             VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                        <ListView ItemsSource="{Binding MenuList}"
-                                  SelectedItem="{Binding SelectedMenuItem}">
+                        <ListView ItemsSource="{Binding MenuList}" SelectedItem="{Binding SelectedMenuItem}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
