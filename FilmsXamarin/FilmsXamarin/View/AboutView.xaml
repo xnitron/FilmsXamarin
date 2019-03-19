@@ -5,16 +5,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="About">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"> 
-            <Label
-                Text="Sabertooth Rabbitfish, cepalin cowfish bluntnose minnow opaleye Pacific trout 
-                suckermouth armored catfish pollock blue gourami, Pacific lamprey lanternfish Black 
-                mackerel minnow eelblenny river stingray large-eye bream. Ridgehead, blue danio
-                ghost flathead ribbon sawtail fish. Gray reef shark snipefish, bichir, r
-                oanoke bass sand knifefish canary rockfish tripod fish. Aruana grunt ar
-                cherfish sawtooth eel alligatorfish codlet wahoo. "
-                HorizontalTextAlignment="Center" />
+        <StackLayout
+            x:Name="outerStack"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Label HorizontalTextAlignment="Center" Text="Sabertooth Rabbitfish, cepalin cowfish bluntnose minnow opaleye Pacific trout suckermouth armored catfish pollock blue gourami, Pacific lamprey lanternfish Black                  mackerel minnow eelblenny river stingray large-eye bream. Ridgehead, blue danio ghost flathead ribbon sawtail fish. Gray reef shark snipefish, bichir, r anoke bass sand knifefish canary rockfish tripod fish. Aruana grunt a   cherfish sawtooth eel alligatorfish codlet wahoo. " />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
