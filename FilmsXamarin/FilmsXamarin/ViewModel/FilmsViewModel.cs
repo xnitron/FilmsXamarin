@@ -31,8 +31,8 @@ namespace FilmsXamarin.ViewModel
             {
                 if (arg != null && arg is ItemTappedEventArgs)
                 {
-                    var str = (arg as ItemTappedEventArgs).Item as FilmModel;
-                    _page.Navigation.PushAsync(new SelectedFilm());
+                    var film = (arg as ItemTappedEventArgs).Item as FilmModel;
+                    _page.Navigation.PushAsync(new DetailFilmView(film.id));
                 }
             });
         }
@@ -54,16 +54,6 @@ namespace FilmsXamarin.ViewModel
             Films = new ObservableCollection<FilmModel>(post);
         }
 
-        private void FilmTapped(object arg)
-        {
-            if (arg != null && arg is ItemTappedEventArgs)
-            {
-                var str = (arg as ItemTappedEventArgs).Item as SelectFilmModel;
-                _page.DisplayAlert("Valet", str.Title, str.poster_path);
-                _page.Navigation.PushAsync(new SelectedFilm());
-            }
-        }
-
         public ObservableCollection<FilmModel> Films
         {
             get
@@ -77,7 +67,6 @@ namespace FilmsXamarin.ViewModel
                     _films = value;
                     NotifyPropertyChanged();
                 }
-
             }
         }
     }
