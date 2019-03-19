@@ -8,44 +8,45 @@
     Title="Films">
 
     <ContentPage.Content>
-        <ListView
-            HasUnevenRows="true"
-            ItemsSource="{Binding Films}"
-            SeparatorVisibility="None">
-            <ListView.Behaviors>
-                <behaviors:EventHandlerBehavior EventName="ItemTapped">
-                    <behaviors:InvokeCommandAction Command="{Binding ItemTappedCommand}" />
-                </behaviors:EventHandlerBehavior>
-            </ListView.Behaviors>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame
-                            Margin="1"
-                            BackgroundColor="Transparent"
-                            HasShadow="True"
-                            OutlineColor="Black">
-                            <StackLayout
-                                Padding="5,0,5,0"
-                                HorizontalOptions="CenterAndExpand"
-                                Orientation="Horizontal"
-                                VerticalOptions="FillAndExpand">
-                                <Image Source="{Binding poster_path, StringFormat='https://image.tmdb.org/t/p/w600_and_h900_bestv2{0}'}" WidthRequest="105" />
-                                <StackLayout>
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="13"
-                                        Text="{Binding Title}" />
-                                    <Label Text="{Binding Vote, StringFormat='Vote average: {0}'}" />
-                                    <Label Text="{Binding ReleaseDate, StringFormat='Release date: {0:d}'}" />
-                                    <Label Text="{Binding OverView}" />
+        <StackLayout Orientation="Horizontal">
+            <ListView
+                HasUnevenRows="true"
+                ItemsSource="{Binding Films}"
+                SeparatorVisibility="None">
+                <ListView.Behaviors>
+                    <behaviors:EventHandlerBehavior EventName="ItemTapped">
+                        <behaviors:InvokeCommandAction Command="{Binding ItemTappedCommand}" />
+                    </behaviors:EventHandlerBehavior>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="1"
+                                BackgroundColor="Transparent"
+                                HasShadow="True"
+                                OutlineColor="Black">
+                                <StackLayout
+                                    Padding="5,0,5,0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="FillAndExpand">
+                                    <Image Source="{Binding poster_path, StringFormat='https://image.tmdb.org/t/p/w600_and_h900_bestv2{0}'}" WidthRequest="105" />
+                                    <StackLayout>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="13"
+                                            Text="{Binding Title}" WidthRequest="100"/>
+                                        <Label Text="{Binding Vote, StringFormat='Vote average: {0}'}" />
+                                        <Label Text="{Binding ReleaseDate, StringFormat='Release date: {0:d}'}" />
+                                        <Label Text="{Binding OverView}" />
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

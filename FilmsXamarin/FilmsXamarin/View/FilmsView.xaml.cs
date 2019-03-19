@@ -20,9 +20,6 @@ namespace FilmsXamarin.View
         {
             InitializeComponent();
             BindingContext = new FilmsViewModel(this);
-            
         }
-
-
     }
 }

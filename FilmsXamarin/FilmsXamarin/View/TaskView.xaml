@@ -41,14 +41,17 @@
                 </ListView>
             </StackLayout>
             <StackLayout>
-                <StackLayout Padding="10" Orientation="Horizontal">
+                <StackLayout
+                    x:Name="StackEntry"
+                    Padding="10"
+                    Orientation="Horizontal">
                     <Entry
                         FontSize="14"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         Placeholder="Критерий"
                         Text="{Binding Criterion}"
-                        VerticalOptions="EndAndExpand" />
+                        VerticalOptions="FillAndExpand" />
                     <Entry
                         FontSize="14"
                         HorizontalOptions="End"
@@ -56,7 +59,7 @@
                         Keyboard="Numeric"
                         MaxLength="3"
                         Text="{Binding SliderValue}"
-                        VerticalOptions="Center"
+                        VerticalOptions="FillAndExpand"
                         WidthRequest="50" />
                 </StackLayout>
                 <Button
