@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout x:Name="MainStack">
             <StackLayout VerticalOptions="Start">
                 <ListView ItemsSource="{Binding CriterionList}" SelectionMode="None">
                     <ListView.ItemTemplate>
@@ -40,25 +40,25 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <StackLayout Padding="10" Orientation="Horizontal">
-                <Entry
-                    FontSize="14"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"
-                    Placeholder="Критерий"
-                    Text="{Binding Criterion}"
-                    VerticalOptions="Center" />
-                <Entry
-                    FontSize="14"
-                    HorizontalOptions="End"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Numeric"
-                    MaxLength="3"
-                    Text="{Binding SliderValue}"
-                    VerticalOptions="Center"
-                    WidthRequest="50" />
-            </StackLayout>
             <StackLayout>
+                <StackLayout Padding="10" Orientation="Horizontal">
+                    <Entry
+                        FontSize="14"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Placeholder="Критерий"
+                        Text="{Binding Criterion}"
+                        VerticalOptions="EndAndExpand" />
+                    <Entry
+                        FontSize="14"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        MaxLength="3"
+                        Text="{Binding SliderValue}"
+                        VerticalOptions="Center"
+                        WidthRequest="50" />
+                </StackLayout>
                 <Button
                     Command="{Binding AddCommand}"
                     CommandParameter="{Binding}"

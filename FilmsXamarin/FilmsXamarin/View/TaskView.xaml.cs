@@ -9,14 +9,36 @@ using Xamarin.Forms.Xaml;
 
 namespace FilmsXamarin.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TaskView : ContentPage
-	{
-		public TaskView ()
-		{
-			InitializeComponent ();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TaskView : ContentPage
+    {
+        public TaskView()
+        {
+            InitializeComponent();
 
-            BindingContext = new TaskViewModel(); 
-		}
-	}
+            BindingContext = new TaskViewModel(this);
+        }
+
+        private double _width, _height;
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (width != _width || height != _height)
+            {
+                _width = width;
+                _height = height;
+
+                if (width > height)
+                {
+                    MainStack.Orientation = StackOrientation.Horizontal;
+                }
+                else
+                {
+                    MainStack.Orientation = StackOrientation.Vertical;
+                }
+            }
+
+        }
+    }
 }

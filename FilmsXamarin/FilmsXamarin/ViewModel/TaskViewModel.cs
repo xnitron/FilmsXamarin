@@ -10,11 +10,12 @@ namespace FilmsXamarin.ViewModel
         private ObservableCollection<TaskModel> _criterionList;
         private string _criterion;
         private double _sliderValue;
-
+        private Page _page;
         public ICommand AddCommand { get; private set; }
 
-        public TaskViewModel()
+        public TaskViewModel(Page page)
         {
+            _page = page;
             CriterionList = new ObservableCollection<TaskModel>
             {
                new TaskModel { Criterion = "Внешний вид", SliderValue = 4.2 },
@@ -75,9 +76,14 @@ namespace FilmsXamarin.ViewModel
 
         private void AddCriterion()
         {
-            CriterionList.Add(new TaskModel { Criterion = _criterion, SliderValue = _sliderValue});                
+            if(string.IsNullOrWhiteSpace(_criterion))
+            {
+                _page.DisplayAlert("Error", "String cannot be empty", "Ok");   
+            }
+            else
+            {
+                CriterionList.Add(new TaskModel { Criterion = _criterion, SliderValue = _sliderValue});                
+            }
         }
-
-       
     }
 }
