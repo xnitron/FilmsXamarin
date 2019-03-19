@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace FilmsXamarin.ViewModel
 {
-    
+
     public class FilmsViewModel : BaseViewModel
     {
         private const string Url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c6237651419d439999a2de574022fd2f";
@@ -29,7 +29,7 @@ namespace FilmsXamarin.ViewModel
             GetJson();
             ItemTappedCommand = new Command((object arg) =>
             {
-                if(arg != null && arg is ItemTappedEventArgs)
+                if (arg != null && arg is ItemTappedEventArgs)
                 {
                     var str = (arg as ItemTappedEventArgs).Item as FilmModel;
                     _page.Navigation.PushAsync(new SelectedFilm());

@@ -2,7 +2,7 @@
 {
     public class StringUtils
     {
-       public static string TrimString(string str, int length = 100)
+       public static string TrimString(string str, int length = 15)
         {
             if (str.Length > length)
             {

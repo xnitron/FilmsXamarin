@@ -13,9 +13,9 @@ namespace FilmsXamarin.ViewModel
 {
     public class MenuBarViewModel : BaseViewModel
     {
-        private ObservableCollection<MenuBarModel> _menuList;
         private MasterDetailPage _page;
 
+        public ObservableCollection<MenuBarModel> MenuList { get; set; }
         public ICommand ItemTappedCommand { get; protected set; }
 
         public MenuBarViewModel(MasterDetailPage page)
@@ -29,22 +29,6 @@ namespace FilmsXamarin.ViewModel
             };
 
             ItemTappedCommand = new Command<object>(MenubarItem);
-        }
-
-        public ObservableCollection<MenuBarModel> MenuList
-        {
-            get
-            {
-                return _menuList;
-            }
-            set
-            {
-                if (value != _menuList)
-                {
-                    _menuList = value;
-                    NotifyPropertyChanged();
-                }
-            }
         }
 
         private void MenubarItem(object arg)
