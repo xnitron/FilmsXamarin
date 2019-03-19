@@ -6,37 +6,47 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using FilmsXamarin.View;
+using FilmsXamarin.ValueConvertes;
 using Xamarin.Forms;
-using System.Reflection;
+using FilmsXamarin.Utils;
 using System.Net.Http;
+using System.Windows.Input;
 
 namespace FilmsXamarin.ViewModel
 {
+    
     public class FilmsViewModel : BaseViewModel
     {
-        private FilmModel _filmModel;
         private const string Url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c6237651419d439999a2de574022fd2f";
-        private HttpClient _client = new HttpClient();
-        private List<FilmModel> json { get; set; }
         private Page _page;
         private ObservableCollection<FilmModel> _films;
+
+        public ICommand ItemTappedCommand { get; protected set; }
 
         public FilmsViewModel(Page page)
         {
             _page = page;
             GetJson();
-
+            ItemTappedCommand = new Command((object arg) =>
+            {
+                if(arg != null && arg is ItemTappedEventArgs)
+                {
+                    var str = (arg as ItemTappedEventArgs).Item as FilmModel;
+                    _page.Navigation.PushAsync(new SelectedFilm());
+                }
+            });
         }
 
         public async void GetJson()
         {
+            var _client = new HttpClient();
             var content = await _client.GetStringAsync(Url);
-            var posts = JsonConvert.DeserializeObject<FilmModelList>(content);
-            json = posts.results;
 
-            var post = json.Select(film =>
+            var post = JsonConvert
+                .DeserializeObject<FilmModelList>(content).results
+                .Select(film =>
                 {
-                    film.OverView = TrimString(film.OverView);
+                    film.OverView = StringUtils.TrimString(film.OverView);
 
                     return film;
                 });
@@ -44,20 +54,13 @@ namespace FilmsXamarin.ViewModel
             Films = new ObservableCollection<FilmModel>(post);
         }
 
-        public FilmModel Film
+        private void FilmTapped(object arg)
         {
-            get
+            if (arg != null && arg is ItemTappedEventArgs)
             {
-                return _filmModel;
-            }
-            set
-            {
-                if (value != _filmModel)
-                {
-                    _filmModel = value;
-                    _page.Navigation.PushAsync(new SelectedFilm());
-                    NotifyPropertyChanged();
-                }
+                var str = (arg as ItemTappedEventArgs).Item as SelectFilmModel;
+                _page.DisplayAlert("Valet", str.Title, str.poster_path);
+                _page.Navigation.PushAsync(new SelectedFilm());
             }
         }
 
@@ -77,15 +80,5 @@ namespace FilmsXamarin.ViewModel
 
             }
         }
-
-        private string TrimString(string str, int length = 20)
-        {
-            if (str.Length > length)
-            {
-                return str.Substring(0, length) + " ...";
-            }
-            return str;
-        }
     }
-
 }

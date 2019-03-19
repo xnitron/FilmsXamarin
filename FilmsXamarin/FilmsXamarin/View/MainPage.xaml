@@ -3,7 +3,8 @@
     x:Class="FilmsXamarin.View.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:FilmsXamarin.View">
+    xmlns:local="clr-namespace:FilmsXamarin.View"
+    xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors">
 
     <MasterDetailPage.Master>
         <ContentPage Title="Films">
@@ -18,7 +19,12 @@
                             VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                        <ListView ItemsSource="{Binding MenuList}" SelectedItem="{Binding SelectedMenuItem}">
+                        <ListView ItemsSource="{Binding MenuList}">
+                            <ListView.Behaviors>
+                                <behaviors:EventHandlerBehavior EventName="ItemTapped">
+                                    <behaviors:InvokeCommandAction Command="{Binding ItemTappedCommand}" />
+                                </behaviors:EventHandlerBehavior>
+                            </ListView.Behaviors>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>

@@ -20,10 +20,6 @@ namespace FilmsXamarin.Model
 
     public class FilmModelList
     {
-
-        public int page { get; set; }
-        public int total_results { get; set; }
-        public int total_pages { get; set; }
         public List<FilmModel> results { get; set; }
     }
 }

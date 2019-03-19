@@ -5,14 +5,18 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Xamarin.Forms;
 using FilmsXamarin.View;
+using FilmsXamarin.ValueConvertes;
+using Xamarin.Forms.PlatformConfiguration;
+using System.Windows.Input;
 
 namespace FilmsXamarin.ViewModel
 {
     public class MenuBarViewModel : BaseViewModel
     {
         private ObservableCollection<MenuBarModel> _menuList;
-        private MenuBarModel _menuBar;
-        MasterDetailPage _page;
+        private MasterDetailPage _page;
+
+        public ICommand ItemTappedCommand { get; protected set; }
 
         public MenuBarViewModel(MasterDetailPage page)
         {
@@ -21,9 +25,10 @@ namespace FilmsXamarin.ViewModel
             MenuList = new ObservableCollection<MenuBarModel>
             {
                 new MenuBarModel { Id = 0, MenuIcon = "about.png", MenuText="About" },
-                new MenuBarModel { Id = 1, MenuIcon = "exit.png", MenuText = "Exit"},
-                new MenuBarModel { Id = 2, MenuIcon = "exit.png", MenuText = "Task View"},
+                new MenuBarModel { Id = 1, MenuIcon = "exit.png", MenuText = "Task View"},
             };
+
+            ItemTappedCommand = new Command<object>(MenubarItem);
         }
 
         public ObservableCollection<MenuBarModel> MenuList
@@ -42,33 +47,24 @@ namespace FilmsXamarin.ViewModel
             }
         }
 
-        public MenuBarModel SelectedMenuItem
+        private void MenubarItem(object arg)
         {
-            get
+            if (arg != null && arg is ItemTappedEventArgs)
             {
-                return _menuBar;
-            }
-            set
-            {
-                if (value != _menuBar)
+                var menuBar = (arg as ItemTappedEventArgs).Item as MenuBarModel;
+
+                switch (menuBar.Id)
                 {
-                    _menuBar = value;
-                    
-                    switch (_menuBar.Id)
-                    {
-                        case 0:
-                            //_page.Navigation.PushAsync(new AboutView());
-                            _page.Detail.Navigation.PushAsync(new AboutView());
-                            _page.IsPresented = false;
-                            break;
-                        case 2:
-                            _page.Detail.Navigation.PushAsync(new TaskView());
-                            _page.IsPresented = false;
-                            break;
-                        default:
-                            break;
-                    }
-                    NotifyPropertyChanged();
+                    case 0:
+                        _page.Detail.Navigation.PushAsync(new AboutView());
+                        _page.IsPresented = false;
+                        break;
+                    case 1:
+                        _page.Detail.Navigation.PushAsync(new TaskView());
+                        _page.IsPresented = false;
+                        break;
+                    default:
+                        break;
                 }
             }
         }

@@ -18,7 +18,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout VerticalOptions="Start">
-                <ListView ItemsSource="{Binding CriterionList}">
+                <ListView ItemsSource="{Binding CriterionList}" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -33,7 +33,7 @@
                                         Maximum="10"
                                         Minimum="0"
                                         Value="{Binding SliderValue}" />
-                                    <Label Margin="0,5,5,5" Text="{Binding Source={x:Reference SliderRating}, Path=Value,  StringFormat='{}{0:0.0}'}" />
+                                    <Label Margin="0,5,5,5" Text="{Binding Source={x:Reference SliderRating}, Path=Value, StringFormat='{}{0:0.0}'}" />
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
