@@ -6,7 +6,7 @@
     Title="{Binding NameTitle}">
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="5">
             <StackLayout Orientation="Horizontal">
                 <Image Source="{Binding Detail.poster_path, StringFormat='https://image.tmdb.org/t/p/w600_and_h900_bestv2{0}'}" WidthRequest="105" />
                 <StackLayout>
@@ -23,7 +23,8 @@
                 </StackLayout>
             </StackLayout>
             <StackLayout>
-                <Label Text="{Binding Detail.OverView}" />
+                <Label Text="{Binding Detail.OverView}"
+                       />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

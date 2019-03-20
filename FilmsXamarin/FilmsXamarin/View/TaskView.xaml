@@ -17,7 +17,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout x:Name="MainStack">
-            <StackLayout VerticalOptions="Start">
+            <StackLayout>
                 <ListView ItemsSource="{Binding CriterionList}" SelectionMode="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -40,7 +40,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <StackLayout>
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
                 <StackLayout
                     x:Name="StackEntry"
                     Padding="10"
@@ -53,6 +55,7 @@
                         Text="{Binding Criterion}"
                         VerticalOptions="FillAndExpand" />
                     <Entry
+                        x:Name="EntryNumber"
                         FontSize="14"
                         HorizontalOptions="End"
                         HorizontalTextAlignment="Center"
@@ -62,10 +65,12 @@
                         VerticalOptions="FillAndExpand"
                         WidthRequest="50" />
                 </StackLayout>
-                <Button
-                    Command="{Binding AddCommand}"
-                    CommandParameter="{Binding}"
-                    Text="ADD" />
+                <StackLayout>
+                    <Button
+                        Command="{Binding AddCommand}"
+                        CommandParameter="{Binding}"
+                        Text="ADD" />
+                </StackLayout>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

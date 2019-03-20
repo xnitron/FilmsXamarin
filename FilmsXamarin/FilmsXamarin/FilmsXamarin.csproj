@@ -10,11 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="films_data.json" />
+    <None Remove="about_data.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="films_data.json" />
+    <EmbeddedResource Include="about_data.json" />
   </ItemGroup>
 
   <ItemGroup>

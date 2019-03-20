@@ -38,12 +38,14 @@ namespace FilmsXamarin.ViewModel
 
         public async void GetJson()
         {
-            var _client = new HttpClient();
-            var content = await _client.GetStringAsync(Url);
+            using (var _client = new HttpClient())
+            {
+                var content = await _client.GetStringAsync(Url);
 
-            Detail = JsonConvert
-                .DeserializeObject<DetailFilmModel>(content);
-            NameTitle = Detail.Title;
+                Detail = JsonConvert
+                    .DeserializeObject<DetailFilmModel>(content);
+                NameTitle = Detail.Title;
+            }
         }
 
         private string _nameTitle;

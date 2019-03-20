@@ -32,10 +32,13 @@ namespace FilmsXamarin.View
                 if (width > height)
                 {
                     MainStack.Orientation = StackOrientation.Horizontal;
+                    StackEntry.Orientation = StackOrientation.Vertical;
+                    EntryNumber.HorizontalOptions = LayoutOptions.FillAndExpand;
                 }
                 else
                 {
                     MainStack.Orientation = StackOrientation.Vertical;
+                    StackEntry.Orientation = StackOrientation.Horizontal;
                 }
             }
 

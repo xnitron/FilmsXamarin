@@ -39,19 +39,19 @@ namespace FilmsXamarin.ViewModel
 
         public async void GetJson()
         {
-            var _client = new HttpClient();
-            var content = await _client.GetStringAsync(Url);
+            using (var _client = new HttpClient())
+            {
+                var content = await _client.GetStringAsync(Url);
+                var post = JsonConvert
+                    .DeserializeObject<FilmModelList>(content).results
+                    .Select(film =>
+                    {
+                        film.OverView = StringUtils.TrimString(film.OverView);
 
-            var post = JsonConvert
-                .DeserializeObject<FilmModelList>(content).results
-                .Select(film =>
-                {
-                    film.OverView = StringUtils.TrimString(film.OverView);
-
-                    return film;
-                });
-
-            Films = new ObservableCollection<FilmModel>(post);
+                        return film;
+                    });
+                Films = new ObservableCollection<FilmModel>(post);
+            }
         }
 
         public ObservableCollection<FilmModel> Films
