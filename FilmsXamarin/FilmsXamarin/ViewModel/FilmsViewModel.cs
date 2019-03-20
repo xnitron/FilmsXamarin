@@ -51,6 +51,7 @@ namespace FilmsXamarin.ViewModel
                         return film;
                     });
                 Films = new ObservableCollection<FilmModel>(post);
+                Indicator = false;
             }
         }
 
@@ -69,5 +70,23 @@ namespace FilmsXamarin.ViewModel
                 }
             }
         }
+
+        private bool _indicator = true;
+        public bool Indicator
+        {
+            get
+            {
+                return _indicator;   
+            }
+            set
+            {
+                if (value != _indicator)
+                {
+                    _indicator = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
     }
 }

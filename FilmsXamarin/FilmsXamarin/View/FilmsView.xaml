@@ -8,7 +8,13 @@
     Title="Films">
 
     <ContentPage.Content>
-        <StackLayout Orientation="Horizontal">
+
+        <StackLayout>
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding Indicator}"
+                IsVisible="{Binding Indicator}"
+                Color="Black" />
             <ListView
                 HasUnevenRows="true"
                 ItemsSource="{Binding Films}"
@@ -36,7 +42,8 @@
                                         <Label
                                             FontAttributes="Bold"
                                             FontSize="13"
-                                            Text="{Binding Title}" WidthRequest="100"/>
+                                            Text="{Binding Title}"
+                                            WidthRequest="100" />
                                         <Label Text="{Binding Vote, StringFormat='Vote average: {0}'}" />
                                         <Label Text="{Binding ReleaseDate, StringFormat='Release date: {0:d}'}" />
                                         <Label Text="{Binding OverView}" />
