@@ -9,7 +9,7 @@
             x:Name="outerStack"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
-            <Label HorizontalTextAlignment="Center" Text="{Binding aboutText}" />
+            <Label Text="{Binding aboutText}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -16,46 +16,46 @@ namespace FilmsXamarin.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            System.Diagnostics.Debug.WriteLine("OnCreate");
             base.OnCreate(savedInstanceState);
+            System.Diagnostics.Debug.WriteLine("OnCreate");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
 
         protected override void OnStart()
         {
-            System.Diagnostics.Debug.WriteLine("OnStart", "OnCreate called, App is OnStart");
             base.OnStart();
+            System.Diagnostics.Debug.WriteLine("OnStart", "OnCreate called, App is OnStart");
         }
 
         protected override void OnResume()
         {
-            System.Diagnostics.Debug.WriteLine("OnResume", "OnCreate called, App is OnResume");
             base.OnResume();
+            System.Diagnostics.Debug.WriteLine("OnResume", "OnCreate called, App is OnResume");
         }
 
         protected override void OnPause()
         {
-            System.Diagnostics.Debug.WriteLine("OnPause", "OnCreate called, App is OnPause");
             base.OnPause();
+            System.Diagnostics.Debug.WriteLine("OnPause", "OnCreate called, App is OnPause");
         }
 
         protected override void OnStop()
         {
-            System.Diagnostics.Debug.WriteLine("OnStop", "OnCreate called, App is OnStop");
             base.OnStop();
+            System.Diagnostics.Debug.WriteLine("OnStop", "OnCreate called, App is OnStop");
         }
 
         protected override void OnDestroy()
         {
-            System.Diagnostics.Debug.WriteLine("OnDestroy", "OnCreate called, App is OnStop");
             base.OnDestroy();
+            System.Diagnostics.Debug.WriteLine("OnDestroy", "OnCreate called, App is OnStop");
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
         {
-            System.Diagnostics.Debug.WriteLine("{0}OnSaveInstanceState ", "OnCreate called, App is Create");
             base.OnSaveInstanceState(outState);
+            System.Diagnostics.Debug.WriteLine("{0}OnSaveInstanceState ", "OnCreate called, App is Create");
         }
     }
 }

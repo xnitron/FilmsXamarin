@@ -8,7 +8,6 @@
     Title="Films">
 
     <ContentPage.Content>
-
         <StackLayout>
             <ActivityIndicator
                 HorizontalOptions="Center"
