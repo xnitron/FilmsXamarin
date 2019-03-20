@@ -7,26 +7,24 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <StackLayout Padding="5">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="{Binding Detail.poster_path, StringFormat='https://image.tmdb.org/t/p/w600_and_h900_bestv2{0}'}" WidthRequest="105" />
-                        <StackLayout>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="13"
-                                Text="{Binding Detail.Title}"
-                                WidthRequest="100" />
-                            <Label Text="{Binding Detail.Language, StringFormat='Language: {0}'}" />
-                            <Label Text="{Binding Detail.Popularity, StringFormat='Popularity: {0}'}" />
-                            <Label Text="{Binding Detail.Budget, StringFormat='Budget: ${0}'}" />
-                            <Label Text="{Binding Detail.Duration, StringFormat='Duration: {0}m'}" />
-                            <Label Text="{Binding Detail.Vote, StringFormat='Vote average: {0}'}" />
-                        </StackLayout>
-                    </StackLayout>
+            <StackLayout Padding="5">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="{Binding Detail.poster_path, StringFormat='https://image.tmdb.org/t/p/w600_and_h900_bestv2{0}'}" WidthRequest="105" />
                     <StackLayout>
-                        <Label Text="{Binding Detail.OverView}" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="13"
+                            Text="{Binding Detail.Title}"
+                            WidthRequest="100" />
+                        <Label Text="{Binding Detail.Language, StringFormat='Language: {0}'}" />
+                        <Label Text="{Binding Detail.Popularity, StringFormat='Popularity: {0}'}" />
+                        <Label Text="{Binding Detail.Budget, StringFormat='Budget: ${0}'}" />
+                        <Label Text="{Binding Detail.Duration, StringFormat='Duration: {0}m'}" />
+                        <Label Text="{Binding Detail.Vote, StringFormat='Vote average: {0}'}" />
                     </StackLayout>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="{Binding Detail.OverView}" />
                 </StackLayout>
             </StackLayout>
         </ScrollView>
