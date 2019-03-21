@@ -5,11 +5,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     Title="About">
     <ContentPage.Content>
-        <StackLayout
-            x:Name="outerStack"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
-            <Label Text="{Binding aboutText}" />
-        </StackLayout>
+        <Grid>
+            <Grid x:Name="SplashGrid" BackgroundColor="#1b97f3">
+                <Image
+                    x:Name="Logo"
+                    HorizontalOptions="Center"
+                    Source="aboutpink2.png"
+                    TranslationY="-12"
+                    VerticalOptions="Center" />
+            </Grid>
+            <StackLayout
+                x:Name="outerStack"
+                IsVisible="False"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Label Text="{Binding aboutText}" />
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
