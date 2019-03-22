@@ -30,7 +30,7 @@
                                 Margin="1"
                                 BackgroundColor="Transparent"
                                 HasShadow="True"
-                                OutlineColor="Black">
+                                OutlineColor="LightGray">
                                 <StackLayout
                                     Padding="5,0,5,0"
                                     HorizontalOptions="CenterAndExpand"

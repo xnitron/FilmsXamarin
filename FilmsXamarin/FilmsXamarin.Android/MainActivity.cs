@@ -42,16 +42,19 @@ namespace FilmsXamarin.Droid
         protected override void OnResume()
         {
             base.OnResume();
+            System.Diagnostics.Debug.WriteLine("OnResume", "OnCreate called, App is OnResume");
         }
 
         protected override void OnPause()
         {
+            System.Diagnostics.Debug.WriteLine("OnPause", "OnCreate called, App is OnPause");
             base.OnPause();
             System.Diagnostics.Debug.WriteLine("OnPause", "OnCreate called, App is OnPause");
         }
 
         protected override void OnStop()
         {
+            System.Diagnostics.Debug.WriteLine("OnStop", "OnCreate called, App is OnStop");
             base.OnStop();
             System.Diagnostics.Debug.WriteLine("OnStop", "OnCreate called, App is OnStop");
         }
