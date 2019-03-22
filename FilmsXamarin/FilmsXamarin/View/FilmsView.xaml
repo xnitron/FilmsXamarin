@@ -25,7 +25,7 @@
                                 Margin="1"
                                 BackgroundColor="Transparent"
                                 HasShadow="True"
-                                OutlineColor="Black">
+                                OutlineColor="LightGray">
                                 <StackLayout
                                     Padding="5,0,5,0"
                                     HorizontalOptions="CenterAndExpand"
@@ -36,7 +36,8 @@
                                         <Label
                                             FontAttributes="Bold"
                                             FontSize="13"
-                                            Text="{Binding Title}" WidthRequest="100"/>
+                                            Text="{Binding Title}"
+                                            WidthRequest="100" />
                                         <Label Text="{Binding Vote, StringFormat='Vote average: {0}'}" />
                                         <Label Text="{Binding ReleaseDate, StringFormat='Release date: {0:d}'}" />
                                         <Label Text="{Binding OverView}" />
