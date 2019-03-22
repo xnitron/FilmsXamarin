@@ -23,6 +23,7 @@ namespace FilmsXamarin.View
                     mainText.FontSize = e.Heading / 10;
             };
             CrossCompass.Current.Start();
+          
         }
 
         protected override async void OnAppearing()

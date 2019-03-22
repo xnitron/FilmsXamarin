@@ -3,21 +3,29 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
+using Android.Content;
 using Android.Widget;
 using Android.OS;
+using Android.Hardware;
+using Android.Provider;
 
 namespace FilmsXamarin.Droid
 {
     [Activity(Label = "Films", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, ISensorEventListener 
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            
             base.OnCreate(savedInstanceState);
             System.Diagnostics.Debug.WriteLine("OnCreate");
+
+            _senMan = (SensorManager)GetSystemService(Context.SensorService);
+            Sensor sen = _senMan.GetDefaultSensor(SensorType.Light);
+            _senMan.RegisterListener(this, sen, Android.Hardware.SensorDelay.Game);
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
@@ -56,6 +64,29 @@ namespace FilmsXamarin.Droid
         {
             base.OnSaveInstanceState(outState);
             System.Diagnostics.Debug.WriteLine("{0}OnSaveInstanceState ", "OnCreate called, App is Create");
+        }
+
+        private SensorManager _senMan;
+        float lightSensorValue;
+
+        public void OnAccuracyChanged(Sensor sensor, [GeneratedEnum] SensorStatus accuracy)
+        {
+            
+        }
+
+        public void OnSensorChanged(SensorEvent e)
+        {
+            e.Sensor = _senMan.GetDefaultSensor(SensorType.Light);
+            lightSensorValue = e.Values[0];
+
+            if(lightSensorValue < 20000)
+            {
+                Window.Attributes.ScreenBrightness = 0.3f;
+            }
+            else
+            {
+                Window.Attributes.ScreenBrightness = 0.7f;
+            }
         }
     }
 }

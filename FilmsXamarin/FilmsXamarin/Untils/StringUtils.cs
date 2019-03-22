@@ -8,6 +8,7 @@
             {
                 return str.Substring(0, length) + " ...";
             }
+
             return str;
         }
     }
