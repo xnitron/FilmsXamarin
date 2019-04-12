@@ -80,7 +80,7 @@ namespace FilmsXamarin.Droid
 
         public void OnAccuracyChanged(Sensor sensor, [GeneratedEnum] SensorStatus accuracy)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Debug.WriteLine("OnAccuracyChanged", "OnAccuracyChanged called, App is AccuracyChanged");
         }
 
         public void OnSensorChanged(SensorEvent e)

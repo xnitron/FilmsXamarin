@@ -15,7 +15,7 @@ namespace FilmsXamarin.ViewModel
         {
             Url += id + "?api_key=c6237651419d439999a2de574022fd2f";
 
-            GetJson();
+            SetFilm();
         }
 
         public DetailFilmModel Detail
@@ -35,7 +35,7 @@ namespace FilmsXamarin.ViewModel
             }
         }
 
-        public async void GetJson()
+        public async void SetFilm()
         {
             using (var _client = new HttpClient())
             {

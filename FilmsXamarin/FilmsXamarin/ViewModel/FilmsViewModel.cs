@@ -1,11 +1,8 @@
 ﻿using FilmsXamarin.Model;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using FilmsXamarin.View;
-using FilmsXamarin.ValueConvertes;
 using Xamarin.Forms;
 using FilmsXamarin.Utils;
 using System.Net.Http;
@@ -18,6 +15,7 @@ namespace FilmsXamarin.ViewModel
     {
         private const string Url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=c6237651419d439999a2de574022fd2f";
         private Page _page;
+        private bool _indicator = true;
         private ObservableCollection<FilmModel> _films;
 
         public ICommand ItemTappedCommand { get; protected set; }
@@ -26,7 +24,7 @@ namespace FilmsXamarin.ViewModel
         {
             _page = page;
 
-            GetJson();
+            SetFilms();
 
             ItemTappedCommand = new Command((object arg) =>
             {
@@ -39,7 +37,7 @@ namespace FilmsXamarin.ViewModel
             });
         }
 
-        public async void GetJson()
+        public async void SetFilms()
         {
             using (var _client = new HttpClient())
             {
@@ -55,6 +53,7 @@ namespace FilmsXamarin.ViewModel
                     });
 
                 Films = new ObservableCollection<FilmModel>(filmsData);
+
                 Indicator = false;
             }
         }
@@ -76,7 +75,6 @@ namespace FilmsXamarin.ViewModel
             }
         }
 
-        private bool _indicator = true;
         public bool Indicator
         {
             get
@@ -88,10 +86,10 @@ namespace FilmsXamarin.ViewModel
                 if (value != _indicator)
                 {
                     _indicator = value;
+
                     NotifyPropertyChanged();
                 }
             }
         }
-
     }
 }
