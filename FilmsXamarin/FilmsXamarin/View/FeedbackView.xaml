@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="FilmsXamarin.View.TaskView"
+    x:Class="FilmsXamarin.View.FeedbackView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Task View">
+    Title="Feedback">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Slider">
@@ -40,9 +40,10 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-            <StackLayout Orientation="Vertical"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand">
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
                 <StackLayout
                     x:Name="StackEntry"
                     Padding="10"

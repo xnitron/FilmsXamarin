@@ -20,7 +20,7 @@ namespace FilmsXamarin.ViewModel
             MenuList = new ObservableCollection<MenuBarModel>
             {
                 new MenuBarModel { Id = 0, MenuIcon = "about.png", MenuText = "About" },
-                new MenuBarModel { Id = 1, MenuIcon = "exit.png", MenuText = "Task View" },
+                new MenuBarModel { Id = 1, MenuIcon = "exit.png", MenuText = "Feedback" },
             };
 
             ItemTappedCommand = new Command<object>(Navigate);
@@ -38,7 +38,7 @@ namespace FilmsXamarin.ViewModel
                         _page.Detail.Navigation.PushAsync(new AboutView());
                         break;
                     case 1:
-                        _page.Detail.Navigation.PushAsync(new TaskView());
+                        _page.Detail.Navigation.PushAsync(new FeedbackView());
                         break;
                     default:
                         break;

@@ -5,15 +5,15 @@ using Xamarin.Forms.Xaml;
 namespace FilmsXamarin.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaskView : ContentPage
+    public partial class FeedbackView : ContentPage
     {
         private double _width, _height;
 
-        public TaskView()
+        public FeedbackView()
         {
             InitializeComponent();
 
-            BindingContext = new TaskViewModel(this);
+            BindingContext = new FeedbackViewModel(this);
         }
 
         protected override void OnSizeAllocated(double width, double height)

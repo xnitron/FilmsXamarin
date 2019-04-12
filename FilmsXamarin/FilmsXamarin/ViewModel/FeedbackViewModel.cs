@@ -5,24 +5,24 @@ using Xamarin.Forms;
 
 namespace FilmsXamarin.ViewModel
 {
-    public class TaskViewModel : BaseViewModel
+    public class FeedbackViewModel : BaseViewModel
     {
-        private ObservableCollection<TaskModel> _criterionList;
+        private ObservableCollection<FeedbackModel> _criterionList;
         private string _criterion;
         private double _sliderValue;
         private Page _page;
 
         public ICommand AddCommand { get; private set; }
 
-        public TaskViewModel(Page page)
+        public FeedbackViewModel(Page page)
         {
             _page = page;
 
-            CriterionList = new ObservableCollection<TaskModel>
+            CriterionList = new ObservableCollection<FeedbackModel>
             {
-               new TaskModel { Criterion = "Внешний вид", SliderValue = 4.2 },
-               new TaskModel { Criterion = "Полезность", SliderValue = 2.5 },
-               new TaskModel { Criterion = "Интересность", SliderValue = 1.7 }
+               new FeedbackModel { Criterion = "Внешний вид", SliderValue = 4.2 },
+               new FeedbackModel { Criterion = "Полезность", SliderValue = 2.5 },
+               new FeedbackModel { Criterion = "Интересность", SliderValue = 1.7 }
             };
 
             AddCommand = new Command(AddCriterion);
@@ -36,11 +36,11 @@ namespace FilmsXamarin.ViewModel
             }
             else
             {
-                CriterionList.Add(new TaskModel { Criterion = _criterion, SliderValue = _sliderValue });                
+                CriterionList.Add(new FeedbackModel { Criterion = _criterion, SliderValue = _sliderValue });                
             } 
         }
 
-        public ObservableCollection<TaskModel> CriterionList
+        public ObservableCollection<FeedbackModel> CriterionList
         {
             get
             {
