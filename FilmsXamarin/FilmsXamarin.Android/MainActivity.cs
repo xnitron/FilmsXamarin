@@ -5,7 +5,6 @@ using Android.Views;
 using Android.Content;
 using Android.OS;
 using Android.Hardware;
-using System;
 
 namespace FilmsXamarin.Droid
 {
