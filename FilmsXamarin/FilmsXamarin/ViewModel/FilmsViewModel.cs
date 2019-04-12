@@ -1,12 +1,8 @@
 ﻿using FilmsXamarin.Model;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using FilmsXamarin.View;
-using FilmsXamarin.ValueConvertes;
 using Xamarin.Forms;
 using FilmsXamarin.Utils;
 using System.Net.Http;
@@ -26,12 +22,15 @@ namespace FilmsXamarin.ViewModel
         public FilmsViewModel(Page page)
         {
             _page = page;
+
             GetJson();
+
             ItemTappedCommand = new Command((object arg) =>
             {
                 if (arg != null && arg is ItemTappedEventArgs)
                 {
                     var film = (arg as ItemTappedEventArgs).Item as FilmModel;
+
                     _page.Navigation.PushAsync(new DetailFilmView(film.id));
                 }
             });
@@ -42,7 +41,8 @@ namespace FilmsXamarin.ViewModel
             using (var _client = new HttpClient())
             {
                 var content = await _client.GetStringAsync(Url);
-                var post = JsonConvert
+
+                var filmsData = JsonConvert
                     .DeserializeObject<FilmModelList>(content).results
                     .Select(film =>
                     {
@@ -50,7 +50,8 @@ namespace FilmsXamarin.ViewModel
 
                         return film;
                     });
-                Films = new ObservableCollection<FilmModel>(post);
+
+                Films = new ObservableCollection<FilmModel>(filmsData);
             }
         }
 
@@ -65,6 +66,7 @@ namespace FilmsXamarin.ViewModel
                 if (value != _films)
                 {
                     _films = value;
+
                     NotifyPropertyChanged();
                 }
             }
