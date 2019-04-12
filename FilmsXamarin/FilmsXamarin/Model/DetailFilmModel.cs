@@ -18,6 +18,5 @@ namespace FilmsXamarin.Model
 
         [JsonProperty("runtime")]
         public int Duration { get; set; }
-
     }
 }
