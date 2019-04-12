@@ -1,6 +1,6 @@
 ﻿namespace FilmsXamarin.Model
 {
-    public class TaskModel
+    public class FeedbackModel
     {
         public string Criterion { get; set; }
 

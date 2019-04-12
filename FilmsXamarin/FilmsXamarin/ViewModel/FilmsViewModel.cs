@@ -23,7 +23,7 @@ namespace FilmsXamarin.ViewModel
         {
             _page = page;
 
-            GetJson();
+            SetFilms();
 
             ItemTappedCommand = new Command((object arg) =>
             {
@@ -36,7 +36,7 @@ namespace FilmsXamarin.ViewModel
             });
         }
 
-        public async void GetJson()
+        public async void SetFilms()
         {
             using (var _client = new HttpClient())
             {

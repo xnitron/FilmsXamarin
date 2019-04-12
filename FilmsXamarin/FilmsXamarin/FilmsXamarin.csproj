@@ -27,6 +27,9 @@
     <Compile Update="View\DetailFilmView.xaml.cs">
       <DependentUpon>DetailFilmView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\FeedbackView.xaml.cs">
+      <DependentUpon>FeedbackView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +42,7 @@
     <EmbeddedResource Update="View\DetailFilmView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\TaskView.xaml">
+    <EmbeddedResource Update="View\FeedbackView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
