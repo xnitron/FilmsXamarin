@@ -1,21 +1,20 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
 using Android.Content;
-using Android.Widget;
 using Android.OS;
 using Android.Hardware;
-using Android.Provider;
+using System;
 
 namespace FilmsXamarin.Droid
 {
     [Activity(Label = "Films", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, ISensorEventListener 
     {
-        private SensorManager _senMan;
-        Sensor sen;
+        private SensorManager _sensorManager;
+        private Sensor sensor;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -25,10 +24,11 @@ namespace FilmsXamarin.Droid
 
             System.Diagnostics.Debug.WriteLine("OnCreate");
 
-            _senMan = (SensorManager)GetSystemService(Context.SensorService);
-            sen = _senMan.GetDefaultSensor(SensorType.Light);
-            _senMan.RegisterListener(this, sen, Android.Hardware.SensorDelay.Game);
+            _sensorManager = (SensorManager)GetSystemService(Context.SensorService);
 
+            sensor = _sensorManager.GetDefaultSensor(SensorType.Light);
+
+            _sensorManager.RegisterListener(this, sensor, Android.Hardware.SensorDelay.Game);
 
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
@@ -80,14 +80,14 @@ namespace FilmsXamarin.Droid
 
         public void OnAccuracyChanged(Sensor sensor, [GeneratedEnum] SensorStatus accuracy)
         {
-            
+            throw new NotImplementedException();
         }
 
         public void OnSensorChanged(SensorEvent e)
         {
-            e.Sensor = _senMan.GetDefaultSensor(SensorType.Light);
+            e.Sensor = _sensorManager.GetDefaultSensor(SensorType.Light);
              
-            if(e.Values[0] < 20000)
+            if (e.Values[0] < 20000)
             {
                 Window.Attributes.ScreenBrightness = 0.2f;
             }
