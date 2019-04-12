@@ -7,13 +7,18 @@ namespace FilmsXamarin.Model
     public class FilmModel
     {
         public int id { get; set; }
+
         public string poster_path { get; set; }
-        [JsonProperty("title")]
+
+        [JsonProperty("title")]        
         public string Title { get; set; }
+
         [JsonProperty("vote_average")]
         public double Vote { get; set; }
+
         [JsonProperty("overview")]
         public string OverView { get; set; }
+
         [JsonProperty("release_date")]
         public DateTime ReleaseDate { get; set; }
     }

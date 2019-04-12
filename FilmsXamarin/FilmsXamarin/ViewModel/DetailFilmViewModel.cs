@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Net.Http;
-using System.Text;
+﻿using System.Net.Http;
 using FilmsXamarin.Model;
 using Newtonsoft.Json;
 
@@ -12,6 +8,15 @@ namespace FilmsXamarin.ViewModel
     {
         private string Url = "https://api.themoviedb.org/3/movie/";
         private DetailFilmModel _detailFilm;
+        private string _title;
+
+
+        public DetailFilmViewModel(int id)
+        {
+            Url += id + "?api_key=c6237651419d439999a2de574022fd2f";
+
+            GetJson();
+        }
 
         public DetailFilmModel Detail
         {
@@ -24,17 +29,11 @@ namespace FilmsXamarin.ViewModel
                 if (value != _detailFilm)
                 {
                     _detailFilm = value;
+
                     NotifyPropertyChanged();
                 }
             }
         }
-
-        public DetailFilmViewModel(int id)
-        {
-            Url += id + "?api_key=c6237651419d439999a2de574022fd2f";
-            GetJson();
-        }
-
 
         public async void GetJson()
         {
@@ -44,26 +43,26 @@ namespace FilmsXamarin.ViewModel
 
                 Detail = JsonConvert
                     .DeserializeObject<DetailFilmModel>(content);
-                NameTitle = Detail.Title;
+
+                Title = Detail.Title;
             }
         }
 
-        private string _nameTitle;
-        public string NameTitle
+        public string Title
         {
             get
             {
-                return _nameTitle;
+                return _title;
             }
             set
             {
-                if (value != _nameTitle)
+                if (value != _title)
                 {
-                    _nameTitle = value;
+                    _title = value;
+
                     NotifyPropertyChanged();
                 }
             }
         }
-
     }
 }

@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using FilmsXamarin.Model;
-using FilmsXamarin.ViewModel;
-using Newtonsoft.Json;
+﻿using FilmsXamarin.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +10,7 @@ namespace FilmsXamarin.View
         public FilmsView()
         {
             InitializeComponent();
+
             BindingContext = new FilmsViewModel(this);
         }
     }

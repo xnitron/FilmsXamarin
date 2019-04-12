@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FilmsXamarin.ViewModel;
+﻿using FilmsXamarin.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,6 +7,8 @@ namespace FilmsXamarin.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaskView : ContentPage
     {
+        private double _width, _height;
+
         public TaskView()
         {
             InitializeComponent();
@@ -19,7 +16,6 @@ namespace FilmsXamarin.View
             BindingContext = new TaskViewModel(this);
         }
 
-        private double _width, _height;
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
@@ -41,7 +37,6 @@ namespace FilmsXamarin.View
                     StackEntry.Orientation = StackOrientation.Horizontal;
                 }
             }
-
         }
     }
 }

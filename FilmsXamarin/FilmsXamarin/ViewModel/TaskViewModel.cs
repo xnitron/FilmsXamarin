@@ -11,11 +11,13 @@ namespace FilmsXamarin.ViewModel
         private string _criterion;
         private double _sliderValue;
         private Page _page;
+
         public ICommand AddCommand { get; private set; }
 
         public TaskViewModel(Page page)
         {
             _page = page;
+
             CriterionList = new ObservableCollection<TaskModel>
             {
                new TaskModel { Criterion = "Внешний вид", SliderValue = 4.2 },
@@ -24,6 +26,18 @@ namespace FilmsXamarin.ViewModel
             };
 
             AddCommand = new Command(AddCriterion);
+        }
+
+        private void AddCriterion()
+        {
+            if (string.IsNullOrWhiteSpace(_criterion))
+            {
+                _page.DisplayAlert("Error", "String can not be empty", "Ok");   
+            }
+            else
+            {
+                CriterionList.Add(new TaskModel { Criterion = _criterion, SliderValue = _sliderValue });                
+            } 
         }
 
         public ObservableCollection<TaskModel> CriterionList
@@ -37,6 +51,7 @@ namespace FilmsXamarin.ViewModel
                 if (value != _criterionList)
                 {
                     _criterionList = value;
+
                     NotifyPropertyChanged();
                 }
             }
@@ -53,6 +68,7 @@ namespace FilmsXamarin.ViewModel
                 if (value != _criterion)
                 {
                     _criterion = value;
+
                     NotifyPropertyChanged();
                 }
             }
@@ -69,20 +85,9 @@ namespace FilmsXamarin.ViewModel
                 if (value != _sliderValue)
                 {
                     _sliderValue = value;
+
                     NotifyPropertyChanged();
                 }
-            }
-        }
-
-        private void AddCriterion()
-        {
-            if(string.IsNullOrWhiteSpace(_criterion))
-            {
-                _page.DisplayAlert("Error", "String cannot be empty", "Ok");   
-            }
-            else
-            {
-                CriterionList.Add(new TaskModel { Criterion = _criterion, SliderValue = _sliderValue});                
             }
         }
     }

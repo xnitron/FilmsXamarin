@@ -1,9 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FilmsXamarin.View;
-using Xamarin.Forms.Internals;
-using System.Diagnostics;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace FilmsXamarin
@@ -15,21 +12,6 @@ namespace FilmsXamarin
             InitializeComponent();
 
             MainPage = new MainPage();
-        }
-
-        protected override void OnStart()
-        {
-            
-        }
-
-        protected override void OnSleep()
-        {
-            
-        }
-
-        protected override void OnResume()
-        {
-            
         }
     }
 }

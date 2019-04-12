@@ -15,6 +15,7 @@ namespace FilmsXamarin.View
         public AboutView()
         {
             InitializeComponent();
+
             BindingContext = new AboutViewModel();
 
             CrossCompass.Current.CompassChanged += (s, e) =>
