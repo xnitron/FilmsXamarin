@@ -8,9 +8,9 @@ namespace FilmsXamarin.View
         public MainPage()
         {
             InitializeComponent();
+
             Detail = new NavigationPage(new FilmsView());
             BindingContext = new MenuBarViewModel(this); 
         }
-        
     }
 }

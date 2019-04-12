@@ -18,6 +18,7 @@ namespace FilmsXamarin.View
         public DetailFilmView(int id)
         {
             InitializeComponent();
+
             BindingContext = new DetailFilmViewModel(id);
         }
     }
