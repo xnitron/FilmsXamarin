@@ -24,14 +24,14 @@ namespace FilmsXamarin.ViewModel
 
             MenuList = new ObservableCollection<MenuBarModel>
             {
-                new MenuBarModel { Id = 0, MenuIcon = "about.png", MenuText="About" },
+                new MenuBarModel { Id = 0, MenuIcon = "about.png", MenuText = "About"},
                 new MenuBarModel { Id = 1, MenuIcon = "exit.png", MenuText = "Task View"},
             };
 
-            ItemTappedCommand = new Command<object>(MenubarItem);
+            ItemTappedCommand = new Command<object>(Navigate);
         }
 
-        private void MenubarItem(object arg)
+        private void Navigate(object arg)
         {
             if (arg != null && arg is ItemTappedEventArgs)
             {
