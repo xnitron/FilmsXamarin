@@ -1,12 +1,7 @@
 ﻿using FilmsXamarin.Model;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using Xamarin.Forms;
 using FilmsXamarin.View;
-using FilmsXamarin.ValueConvertes;
-using Xamarin.Forms.PlatformConfiguration;
 using System.Windows.Input;
 
 namespace FilmsXamarin.ViewModel
@@ -24,14 +19,14 @@ namespace FilmsXamarin.ViewModel
 
             MenuList = new ObservableCollection<MenuBarModel>
             {
-                new MenuBarModel { Id = 0, MenuIcon = "about.png", MenuText="About" },
+                new MenuBarModel { Id = 0, MenuIcon = "about.png", MenuText = "About" },
                 new MenuBarModel { Id = 1, MenuIcon = "exit.png", MenuText = "Task View"},
             };
 
-            ItemTappedCommand = new Command<object>(MenubarItem);
+            ItemTappedCommand = new Command<object>(Navigate);
         }
 
-        private void MenubarItem(object arg)
+        private void Navigate(object arg)
         {
             if (arg != null && arg is ItemTappedEventArgs)
             {
@@ -41,15 +36,15 @@ namespace FilmsXamarin.ViewModel
                 {
                     case 0:
                         _page.Detail.Navigation.PushAsync(new AboutView());
-                        _page.IsPresented = false;
                         break;
                     case 1:
                         _page.Detail.Navigation.PushAsync(new TaskView());
-                        _page.IsPresented = false;
                         break;
                     default:
                         break;
                 }
+
+                _page.IsPresented = false;
             }
         }
     }
