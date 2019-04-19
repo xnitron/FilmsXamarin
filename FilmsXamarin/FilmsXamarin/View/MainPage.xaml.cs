@@ -1,5 +1,6 @@
 ﻿using FilmsXamarin.ViewModel;
 using Xamarin.Forms;
+using Plugin.Fingerprint;
 
 namespace FilmsXamarin.View
 {
@@ -9,8 +10,18 @@ namespace FilmsXamarin.View
         {
             InitializeComponent();
 
-            Detail = new NavigationPage(new FilmsView());
-            BindingContext = new MenuBarViewModel(this); 
+            Authenticate();
+        }
+
+        private async void Authenticate()
+        {
+            var authResult = await CrossFingerprint.Current.AuthenticateAsync("Put your finger");
+
+            if (authResult.Authenticated)
+            {
+                Detail = new NavigationPage(new FilmsView());
+                BindingContext = new MenuBarViewModel(this);
+            }
         }
     }
 }
