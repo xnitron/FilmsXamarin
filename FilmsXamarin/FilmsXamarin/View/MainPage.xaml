@@ -48,6 +48,21 @@
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <ContentPage />
+        <ContentPage>
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Entry
+                    x:Name="PasswordField"
+                    IsPassword="true"
+                    Placeholder="Password" />
+                <Button
+                    Clicked="OnAuthButtonClick"
+                    HorizontalOptions="Center"
+                    Text="Sign in" />
+                <Button
+                    Clicked="OnAuthFingerButtonClick"
+                    HorizontalOptions="Center"
+                    Text="Sign in with Fingerprint" />
+            </StackLayout>
+        </ContentPage>
     </MasterDetailPage.Detail>
 </MasterDetailPage>
